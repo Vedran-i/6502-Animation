@@ -1,0 +1,37 @@
+START:
+LDA #$01	;CYCLE 1
+STA $405
+JSR Delay
+LDA #$02
+STA $425
+JSR Delay
+LDA #$00
+STA $405
+
+LDA #$01
+STA $406
+JSR Delay
+LDA #$00
+STA $425
+LDA #$02
+STA $426
+JSR Delay
+LDA #$00
+STA $406
+
+
+
+
+JMP START
+
+Delay:
+LDX #$01
+
+LOOP:
+INX
+CPX #$80
+BEQ Done
+JMP LOOP
+Done:
+
+RTS
