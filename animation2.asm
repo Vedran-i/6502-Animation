@@ -1,0 +1,70 @@
+LDX #0
+LDA #$01
+STA $1000
+LDA #$FF
+STA $2000
+
+start:
+
+right:
+JSR Delay
+LDA $FF
+STA $FF
+INX
+JMP display
+
+display:
+LDA #$0A
+STA $300,X
+STA $200,X
+STA $400,X
+STA $500,X
+LDA $1000
+CMP $2000
+BEQ end
+INC $1000
+
+JMP start
+
+Delay:
+
+LDY #$00
+Loop:
+CPY #$20
+BEQ ddone
+INY 
+JMP Loop
+
+ddone:
+
+RTS
+
+end:
+LDA #$01
+STA $38A
+STA $38C
+STA $38E
+
+STA $3AA
+STA $3AC
+
+
+STA $3CA
+STA $3CB
+STA $3CC
+STA $3CE
+
+STA $3EA
+STA $3EC
+STA $3EE
+
+STA $40A
+STA $40C
+STA $40E
+
+LDA #$0A
+STA $300
+STA $200
+STA $400
+STA $500
+
