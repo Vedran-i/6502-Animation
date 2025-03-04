@@ -165,6 +165,8 @@ STA $3F1
 STA $3F3
 STA $3F7
 
+JSR Delay
+
 LDA #$00	;Row 5
 STA $407
 STA $409
@@ -178,12 +180,16 @@ STA $415
 STA $416
 STA $417
 
+JSR Delay
+
 LDA #$00	;Row 6
 STA $427
 STA $42B
 STA $42F
 STA $433
 STA $437
+
+JSR Delay
 
 LDA #$00	;Row 7
 STA $447
