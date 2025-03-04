@@ -210,7 +210,69 @@ STA $455
 STA $456
 STA $457
 
+JSR Delay
+JSR Delay
 
+LDA #$01
+STA $368
+STA $36A
+STA $36C
+STA $36E
+STA $370
+STA $372
+STA $374
+STA $376
+
+STA $468
+STA $46A
+STA $46C
+STA $46E
+STA $470
+STA $472
+STA $474
+STA $476
+
+JSR Delay
+JSR Delay
+JSR Delay
+JSR Delay
+JSR Delay
+
+
+LDX #0
+LDA #$FF
+STA $1000
+LDA #$00
+STA $1001
+
+start1:
+
+right1:
+
+LDA $FF
+STA $FF
+INX
+INX
+INX
+JMP display1
+
+display1:
+LDA #$0E
+STA $200,X
+LDA #$05
+STA $300,X
+STA $400,X
+LDA #$0E
+STA $500,X
+
+LDA $1001
+CMP $1000
+BEQ theend3
+INC $1001
+
+JMP start1
+
+theend3:
 
 Delay:
 LDX #$01
