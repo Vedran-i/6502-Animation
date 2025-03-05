@@ -1,0 +1,46 @@
+Constants:
+LDA #$02
+STA $2000
+LDA #$03
+STA $2001
+
+Code:
+
+LDA #$00
+STA $1000
+LDA #$FF
+STA $1001
+start:
+LDA $2000
+STA $400, X
+STA $200, X
+INX
+LDA $1000
+CMP $1001
+INC $1000
+BEQ done
+
+JMP start
+
+done:
+
+LDA #$00
+STA $1000
+LDA #$FF
+STA $1001
+start2:
+LDA $2001
+STA $300, X
+STA $500, X
+INX
+LDA $1000
+CMP $1001
+INC $1000
+BEQ done1
+
+JMP start2
+
+done1:
+INC $2000
+INC $2001
+JMP start
