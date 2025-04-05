@@ -1,0 +1,28 @@
+start:
+
+LDA #$08
+STA $200, Y
+STA $300, Y
+
+LDA #$07
+STA $310
+STA $311
+STA $330
+STA $331
+
+LDA $fe
+LDX $fe
+AND #$01
+STA $400, X
+
+LDA $fe
+LDX $fe
+AND #$01
+STA $500, X
+
+LDA #$06
+STA $400, Y
+STA $500, Y
+INY
+
+JMP start
