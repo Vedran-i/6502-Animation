@@ -1,4 +1,4 @@
-LDA #01
+LDA #$01
 STA $1000
 
 start:
@@ -19,10 +19,10 @@ DEX
 display:
 
 LDA $1000
-STA $200,X
-STA $300,X
-STA $400,X
-STA $500,X
+STA $200, X
+STA $300, X
+STA $400, X
+STA $500, X
 
 
 Flower:
