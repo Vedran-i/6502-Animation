@@ -1,0 +1,38 @@
+LDA #$07
+STA $255
+
+main:
+JSR random
+LDA #$01
+STA $0200, y
+LDA #$05
+STA $0201, x
+LDA #$07
+STA $0232, x
+
+STA $020B, y
+STA $020C, x
+LDA #$08
+STA $0208, x
+LDA #$03
+STA $020F, x
+
+INX
+INY
+LDA $299
+CMP #$08
+BEQ done
+JMP main
+
+done:
+INY
+JMP main
+
+random:
+LDA $255
+STA $510
+STA $511
+STA $530
+STA $531
+
+RTS
