@@ -1,0 +1,230 @@
+LDA #$00
+STA $1000
+LDA #$00
+STA $2000
+
+main:
+JSR delay
+JSR blank
+JSR delay
+JSR Zero
+JSR delay
+JSR blank
+JSR delay
+JSR One
+JSR delay
+JSR blank
+JSR delay
+JSR Two
+JSR delay
+JSR blank
+JSR delay
+JSR Three
+JSR delay
+JSR blank
+JSR delay
+JSR Four
+JSR delay
+JSR blank
+JSR delay
+JSR Five
+JSR delay
+JSR blank
+JSR delay
+JSR Six
+JSR delay
+JSR blank
+JSR delay
+JSR Seven
+JSR delay
+JSR blank
+JSR delay
+JSR Eight
+JSR delay
+JSR blank
+JSR delay
+JSR Nine
+JSR delay
+JSR blank
+
+blank:
+
+LDA #$00
+
+STA $221
+STA $222
+STA $223
+
+STA $241
+STA $242
+STA $243
+
+STA $261
+STA $262
+STA $263
+
+STA $281
+STA $282
+STA $283
+
+STA $2A1
+STA $2A2
+STA $2A3
+
+RTS
+
+Zero:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $241
+STA $243
+STA $261
+STA $263
+STA $281
+STA $283
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+One:
+LDA #$01
+STA $223
+STA $243
+STA $263
+STA $283
+STA $2A3
+RTS
+
+Two:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $243
+STA $261
+STA $262
+STA $263
+STA $281
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+Three:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $243
+STA $261
+STA $262
+STA $263
+STA $283
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+Four:
+LDA #$01
+STA $221
+STA $223
+STA $241
+STA $243
+STA $261
+STA $262
+STA $263
+STA $283
+STA $2A3
+RTS
+
+Five:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $241
+STA $261
+STA $262
+STA $263
+STA $283
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+Six:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $241
+STA $261
+STA $262
+STA $263
+STA $281
+STA $283
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+Seven:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $243
+STA $263
+STA $283
+STA $2A3
+RTS
+
+Eight:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $241
+STA $243
+STA $261
+STA $262
+STA $263
+STA $281
+STA $283
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+Nine:
+LDA #$01
+STA $221
+STA $222
+STA $223
+STA $241
+STA $243
+STA $261
+STA $262
+STA $263
+STA $283
+STA $2A1
+STA $2A2
+STA $2A3
+RTS
+
+
+delay:
+LDA $1000
+CMP #$FF
+BEQ done
+INC $1000
+JMP delay
+
+done:
+LDA #$00
+STA $1000
+RTS
