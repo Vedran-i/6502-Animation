@@ -1,4 +1,4 @@
-Assembly code written for no specific hardware. Use emulator/simulator. Note that the clock rate might differ between emulators.  
+Assembly code written for no specific hardware. Use emulator/simulator. Note that the clock rate might differ between emulators, so adjust the delay subroutine as needed.   
 
 6502 Emulators:
 
