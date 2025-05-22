@@ -1,0 +1,108 @@
+;-------- Basics -----------------
+
+loop:
+LDA table, X  ;load accumulator with the table with X register
+STA $410, X   ;store in GPU with X register
+INX           ;Increment X register
+CPX #$05      ;Compare X reg with value of 5 (The amount of columns in table, having a lower number will display less of the sprite, higher number will loop and display the first byte of the sprite)
+BNE loop      ;If X is not 5, keep looping until it does
+
+table:
+DCB $01, $02, $03, $04, $05
+
+
+;-------- Alternative 1 --------
+;proper way to display it
+
+LDX #0          ; Index into sprite table
+
+    ; Row 0
+    LDY #0
+row0:
+    LDA table,X
+    STA $0400,Y
+    INX
+    INY
+    CPY #6
+    BNE row0
+
+    ; Row 1
+    LDY #0
+row1:
+    LDA table,X
+    STA $0420,Y
+    INX
+    INY
+    CPY #6
+    BNE row1
+
+    ; Row 2
+    LDY #0
+row2:
+    LDA table,X
+    STA $0440,Y
+    INX
+    INY
+    CPY #6
+    BNE row2
+
+    ; Row 3
+    LDY #0
+row3:
+    LDA table,X
+    STA $0460,Y
+    INX
+    INY
+    CPY #6
+    BNE row3
+
+   LDY #0
+row4:
+    LDA table,X
+    STA $0480,Y
+    INX
+    INY
+    CPY #6
+    BNE row4
+
+    RTS
+
+table:
+    DCB $02, $02, $02, $02, $02, $02
+    DCB $02, $01, $01, $01, $01, $02
+    DCB $02, $01, $01, $01, $01, $02
+    DCB $02, $01, $01, $01, $01, $02
+    DCB $02, $02, $02, $02, $02, $02
+
+
+;-------- Alternative 1 --------
+;more compact
+
+loop:
+LDA table0, x
+STA $400, x
+LDA table1, x
+STA $420, x
+LDA table2, x
+STA $440, x
+LDA table3, x
+STA $460, x
+LDA table4, x
+STA $480, x
+
+INX
+CPX #$6
+BNE loop
+
+
+table0:
+DCB $02, $02, $02, $02, $02, $02
+table1:
+DCB $02, $01, $01, $01, $01, $02
+table2:
+DCB $02, $01, $01, $01, $01, $02
+table3:
+DCB $02, $01, $01, $01, $01, $02
+table4:
+DCB $02, $02, $02, $02, $02, $02
+
