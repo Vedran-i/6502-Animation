@@ -75,7 +75,7 @@ table:
     DCB $02, $02, $02, $02, $02, $02
 
 
-;-------- Alternative 1 --------
+;-------- Alternative 2 --------
 ;more compact
 
 loop:
