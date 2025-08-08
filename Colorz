@@ -1,0 +1,28 @@
+LDA #$00
+STA $49
+
+LDA #$10
+STA $50
+
+LDA #$01
+STA $12
+
+start:
+LDA $12
+STA $200, x
+STA $300, x
+STA $400, x
+STA $500, x
+INX
+INC $49
+LDA $49
+CMP #$09
+BEQ done
+JMP start
+
+done:
+LDA #$00
+STA $49
+
+INC $12
+JMP start
