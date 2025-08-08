@@ -7,7 +7,20 @@ STA $50
 LDA #$01
 STA $12
 
+LDA #$01
+STA $13
+
+LDA #$00
+STA $14
+
+LDA #$01
+STA $15
+
 start:
+LDA $13
+CMP #$04
+BEQ reset
+
 LDA $12
 STA $200, x
 STA $300, x
@@ -16,13 +29,56 @@ STA $500, x
 INX
 INC $49
 LDA $49
-CMP #$09
+CMP $13
 BEQ done
+
+LDA $14
+CMP #$FF
+BEQ phase2
+INC $14
 JMP start
 
 done:
 LDA #$00
 STA $49
-
+JSR theCMPfunc
 INC $12
 JMP start
+
+
+theCMPfunc:
+INC $13
+RTS
+
+reset:
+LDA #$01
+STA $13
+JMP start
+
+phase2:
+
+start2:
+LDA $15
+STA $200, y
+STA $300, y
+STA $400, y
+STA $500, y
+INY
+INC $49
+LDA $49
+CMP #$12
+BEQ done2
+
+LDA $14
+CMP #$FF
+BEQ phase2
+
+
+JMP start
+
+done2:
+LDA #$00
+STA $49
+
+INC $15
+JMP start2
