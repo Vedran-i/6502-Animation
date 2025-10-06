@@ -1,0 +1,214 @@
+define position $0300
+define position2 $030F
+define position3 $0311
+LDX #$00
+LDA #$01
+STA $12
+LDA #$00
+STA $13
+
+init:
+LDA #$0B
+STA $200, y
+STA $400, y
+STA $500, y
+CPY #$FF
+BEQ main
+INY
+JMP init
+
+main:
+; p
+LDA #$01
+STA $425
+STA $426
+STA $427
+STA $445
+STA $448
+STA $465
+STA $468
+STA $485
+STA $486
+STA $487
+STA $4A5
+STA $4C5
+STA $4E5
+; a
+STA $46A
+STA $46B
+STA $46C
+STA $48C
+STA $4AA
+STA $4AB
+STA $4AC
+STA $4CA
+STA $4CC
+STA $4EA
+STA $4EB
+STA $4EC
+; i
+STA $46E
+STA $4AE
+STA $4CE
+STA $4EE
+; n
+STA $490
+STA $4B0
+STA $4B1
+STA $4B2
+STA $4D0
+STA $4D2
+STA $4F0
+STA $4F2
+;t
+STA $475
+STA $495
+STA $494
+STA $495
+STA $496
+STA $4B5
+STA $4D5
+STA $4F5
+STA $4F6
+
+;misc
+LDA #$0A
+STA $4D9
+
+LDA #$0D
+STA $4DA
+
+LDA #$0E
+STA $4DB
+LDA $FF
+CMP #$64
+BEQ PressRight
+LDA $FF
+CMP #$61
+BEQ PressLeft
+LDA $FF
+CMP #$61
+BEQ PressLeft
+LDA $FF
+CMP #$73
+BEQ PressDown
+LDA $FF
+CMP #$77
+BEQ PressUp
+LDA $FF
+CMP #$65
+BEQ colorz
+LDA $FF
+CMP #$71
+BEQ erase
+
+
+JMP main
+
+PressRight:
+LDA $12
+STA $300, x
+INX
+JSR resetbutton
+JMP main
+
+PressLeft:
+LDA $12
+STA $300, x
+DEX
+JSR resetbutton
+JMP main
+
+PressDown:
+LDA $12
+STA $300, x
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+INX
+JSR resetbutton
+JMP main
+
+PressUp:
+LDA $12
+STA $300, x
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+DEX
+
+JSR resetbutton
+JMP main
+
+colorz:
+INC $12
+JMP main
+
+erase:
+LDA #$00
+STA $12
+JMP main
+
+resetbutton:
+LDA #$00
+STA $FF
+RTS
+
+
+
