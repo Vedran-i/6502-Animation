@@ -18,6 +18,10 @@ INY
 JMP init
 
 main:
+
+LDA $12
+STA $300, x
+
 ; p
 LDA #$01
 STA $425
@@ -71,7 +75,7 @@ STA $4D5
 STA $4F5
 STA $4F6
 
-;misc
+;orange, green and blue color next to "paint"
 LDA #$0A
 STA $4D9
 
@@ -80,6 +84,7 @@ STA $4DA
 
 LDA #$0E
 STA $4DB
+
 LDA $FF
 CMP #$64
 BEQ PressRight
@@ -106,92 +111,52 @@ BEQ erase
 JMP main
 
 PressRight:
-LDA $12
-STA $300, x
-INX
+
+
+TXA
+LDA $300
+CLC
+ADC #$01
+STA $300
+TAX
+
 JSR resetbutton
 JMP main
 
 PressLeft:
-LDA $12
-STA $300, x
-DEX
+
+
+TXA
+LDA $300
+SEC
+SBC #$01
+STA $300
+TAX
+
 JSR resetbutton
 JMP main
 
 PressDown:
-LDA $12
-STA $300, x
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
-INX
+
+
+TXA
+LDA $300
+CLC
+ADC #$20
+STA $300
+TAX
+
 JSR resetbutton
 JMP main
 
 PressUp:
-LDA $12
-STA $300, x
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
-DEX
+
+TXA
+LDA $300
+SEC
+SBC #$20
+STA $300
+TAX
 
 JSR resetbutton
 JMP main
@@ -209,6 +174,3 @@ resetbutton:
 LDA #$00
 STA $FF
 RTS
-
-
-
