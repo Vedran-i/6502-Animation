@@ -114,10 +114,10 @@ PressRight:
 
 
 TXA
-LDA $300
+LDA $100
 CLC
 ADC #$01
-STA $300
+STA $100
 TAX
 
 JSR resetbutton
@@ -127,10 +127,10 @@ PressLeft:
 
 
 TXA
-LDA $300
+LDA $100
 SEC
 SBC #$01
-STA $300
+STA $100
 TAX
 
 JSR resetbutton
@@ -140,10 +140,10 @@ PressDown:
 
 
 TXA
-LDA $300
+LDA $100
 CLC
 ADC #$20
-STA $300
+STA $100
 TAX
 
 JSR resetbutton
@@ -152,10 +152,10 @@ JMP main
 PressUp:
 
 TXA
-LDA $300
+LDA $100
 SEC
 SBC #$20
-STA $300
+STA $100
 TAX
 
 JSR resetbutton
